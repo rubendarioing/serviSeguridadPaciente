@@ -1,0 +1,34 @@
+<form class="emp-form" #novedadForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input class="form-control" name="PacNom" #PacNom="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom"
+        placeholder="Primer Nombre">
+    </div>
+    <div class="form-group col-md-6">
+      <input class="form-control" name="PacNom2" #PacNom2="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom2"
+        placeholder="Segundo Nombre">
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" name="PacApellido" #PacApellido="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido"
+      placeholder="Primer Apellido">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input class="form-control" name="PacApellido1" #PacApellido1="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido1"
+        placeholder="Segundo Apellido">
+    </div>
+    <div class="form-group col-md-6">
+      <input class="form-control" name="PacNit" #PacNit="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNit"
+        placeholder="NIT">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <button type="submit" class="btn btn-lg btn-block btn-info"><i class="fa fa-floppy-o"></i> Guardar</button>
+    </div>
+    <div class="form-group col-md-4">
+      <button type="submit" class="btn btn-lg btn-block btn-secondary"><i class="fa fa-repeat"></i> Borrar</button>
+    </div>
+  </div>
+</form>
