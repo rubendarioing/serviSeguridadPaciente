@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NovedadService } from './shared/novedad.service';
+
+import { NovedadService } from './shared/novedad.service'
 
 @Component({
   selector: 'app-novedades',

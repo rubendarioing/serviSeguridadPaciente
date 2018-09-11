@@ -5,6 +5,6 @@ import { Novedad } from './novedad.model';
 @Injectable()
 export class NovedadService {
 
-  selectedNovedad : Novedad;
+  selectedNovedad : Novedad = new Novedad();
   constructor() { }
 }

@@ -1,17 +1,27 @@
-<form class="emp-form" #novedadForm="ngForm">
+<form class="emp-form" #employeeForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-6">
       <input class="form-control" name="PacNom" #PacNom="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom"
-        placeholder="Primer Nombre">
+        placeholder="Primer Nombre" required>
+      <div class="validation-error" *ngIf="PacNom.invalid && PacNom.touched">Campo Obligatorio.</div>
     </div>
     <div class="form-group col-md-6">
       <input class="form-control" name="PacNom2" #PacNom2="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom2"
         placeholder="Segundo Nombre">
+      <div class="validation-error" *ngIf="PacNom2.invalid && PacNom2.touched">Campo Obligatorio.</div>
     </div>
   </div>
-  <div class="form-group">
-    <input class="form-control" name="PacApellido" #PacApellido="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido"
-      placeholder="Primer Apellido">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input class="form-control" name="PacApellido" #PacApellido="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido"
+        placeholder="Primer Apellido" required>
+      <div class="validation-error" *ngIf="PacApellido.invalid && PacApellido.touched"></div>
+    </div>
+    <div class="form-group col-md-6">
+        <input class="form-control" name="PacApellido1" #PacApellido1="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido1"
+        placeholder="Segundo Apellido" required>
+        <div class="validation-error" *ngIf="PacApellido1.invalid && PacApellido1.touched"></div>
+    </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -28,7 +38,8 @@
       <button type="submit" class="btn btn-lg btn-block btn-info"><i class="fa fa-floppy-o"></i> Guardar</button>
     </div>
     <div class="form-group col-md-4">
-      <button type="submit" class="btn btn-lg btn-block btn-secondary"><i class="fa fa-repeat"></i> Borrar</button>
+      <button type="submit" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(novedadForm)"><i class="fa fa-repeat"></i>
+        Borrar</button>
     </div>
   </div>
 </form>
