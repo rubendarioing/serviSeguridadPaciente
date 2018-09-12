@@ -12,23 +12,32 @@ import { NovedadService } from '../shared/novedad.service';
 })
 export class NovedadComponent implements OnInit {
 
-  constructor(private novedadService : NovedadService) { }
+  constructor(private novedadService: NovedadService) { }
 
   ngOnInit() {
     this.resetForm();
   }
 
-  resetForm(form? : NgForm){
-    if(form != null){
-    form.reset();
-    this.novedadService.selectedNovedad={
-      PacID:null,
-      PacNom:'',
-      PacNom2:'',
-      PacApellido : '',
-      PacApellido1 :'',
-      PacNit:null
-    }   
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.reset();
+      this.novedadService.selectedNovedad = {
+        PacID: null,
+        PacNom: '',
+        PacNom2: '',
+        PacApellido: '',
+        PacApellido1: '',
+        PacNit: null,
+        PacTipoIden:'',
+        PacFechaReg : null
+      }
+    }
   }
+
+  onSubmit(form: NgForm) {
+    this.novedadService.postNovedad(form.value)
+      .subscribe(data => {
+        this.resetForm(form);
+      });
   }
 }
