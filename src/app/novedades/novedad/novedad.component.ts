@@ -4,6 +4,7 @@ import { NovedadService } from '../shared/novedad.service';
 
 
 
+
 @Component({
   selector: 'app-novedad',
   templateUrl: './novedad.component.html',
@@ -12,10 +13,34 @@ import { NovedadService } from '../shared/novedad.service';
 })
 export class NovedadComponent implements OnInit {
 
-  constructor(private novedadService: NovedadService) { }
+  countries = [
+    {id: 1, name: "United States"},
+    {id: 2, name: "Australia"},
+    {id: 3, name: "Canada"},
+    {id: 4, name: "Brazil"},
+    {id: 5, name: "England"}
+  ];
+
+  Nits =[];
+  
+  tipo = [];
+
+  constructor(private novedadService: NovedadService) { 
+    this.novedadService.getTipoDocumentos().subscribe(data =>{
+      this.tipo=data;
+    });
+    this.Nits = [
+      {id:"CC",name:"CC"},
+      {id:"TI",name:"TI"},
+      {id:"NIT",name:"NIT"},
+      {id:"PA",name:"PA"},
+    ];
+
+  }
 
   ngOnInit() {
     this.resetForm();
+    
   }
 
   resetForm(form?: NgForm) {
@@ -29,8 +54,8 @@ export class NovedadComponent implements OnInit {
         PacApellido1: '',
         PacNit: null,
         PacTipoIden:'',
-        PacFechaReg : null
-      }
+        PacFechaReg : null        
+      }     
     }
   }
 
