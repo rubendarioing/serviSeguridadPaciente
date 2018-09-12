@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod} from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import {TipoDoc} from './TipoDocumentos';
@@ -10,7 +10,7 @@ import { Novedad } from './novedad.model';
 export class NovedadService {
 
   selectedNovedad : Novedad = new Novedad();
-  constructor(private http: Http, private httpcli:HttpClient) { }
+  constructor(private http: Http/*, private httpcli:HttpClient*/) { }
 
   postNovedad(nov: Novedad){
     var body = JSON.stringify(nov);
@@ -19,7 +19,7 @@ export class NovedadService {
     return this.http.post('http://rubendarioing-001-site1.htempurl.com/api/Pacientes', body, requestOptions).pipe(map(x=>x.json())) ;
   }
 
-  getTipoDocumentos(){
+  /*getTipoDocumentos(){
     return this.httpcli.get<TipoDoc[]>("url");
-  }
+  }*/
 }

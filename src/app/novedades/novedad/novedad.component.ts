@@ -26,9 +26,9 @@ export class NovedadComponent implements OnInit {
   tipo = [];
 
   constructor(private novedadService: NovedadService) { 
-    this.novedadService.getTipoDocumentos().subscribe(data =>{
+   /* this.novedadService.getTipoDocumentos().subscribe(data =>{
       this.tipo=data;
-    });
+    });*/
     this.Nits = [
       {id:"CC",name:"CC"},
       {id:"TI",name:"TI"},
