@@ -13,34 +13,31 @@ import { NovedadService } from '../shared/novedad.service';
 })
 export class NovedadComponent implements OnInit {
 
-  countries = [
-    {id: 1, name: "United States"},
-    {id: 2, name: "Australia"},
-    {id: 3, name: "Canada"},
-    {id: 4, name: "Brazil"},
-    {id: 5, name: "England"}
-  ];
+  Sedes = [];
+  Nits = [];
 
-  Nits =[];
-  
-  tipo = [];
+  //tipo = [];
 
-  constructor(private novedadService: NovedadService) { 
-   /* this.novedadService.getTipoDocumentos().subscribe(data =>{
-      this.tipo=data;
-    });*/
+  constructor(private novedadService: NovedadService) {
+    /* this.novedadService.getTipoDocumentos().subscribe(data =>{
+       this.tipo=data;
+     });*/
     this.Nits = [
-      {id:"CC",name:"CC"},
-      {id:"TI",name:"TI"},
-      {id:"NIT",name:"NIT"},
-      {id:"PA",name:"PA"},
+      { id: "0", name: "CC" },
+      { id: "1", name: "TI" },
+      { id: "2", name: "NIT" },
+      { id: "3", name: "PA" }
     ];
-
+    this.Sedes = [
+      { id: "0", name: "116" },
+      { id: "1", name: "Kenedy" },
+      { id: "2", name: "IMEF" },
+      { id: "3", name: "Calle 26" }
+    ]
   }
 
   ngOnInit() {
     this.resetForm();
-    
   }
 
   resetForm(form?: NgForm) {
@@ -53,9 +50,12 @@ export class NovedadComponent implements OnInit {
         PacApellido: '',
         PacApellido1: '',
         PacNit: null,
-        PacTipoIden:'',
-        PacFechaReg : null        
-      }     
+        PacTipoIden: "CC",
+        PacFechaReg: new Date(),
+        PacIdSede: null,
+        PacEdad:null,
+        PacEmail:''
+      }
     }
   }
 

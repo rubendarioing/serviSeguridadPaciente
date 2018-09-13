@@ -6,8 +6,10 @@ export class Novedad {
     PacApellido1 : string;	
     PacNit : string;
     PacTipoIden	: string;
-    /*PacEmail :string;
+    PacIdSede:number;
     PacEdad	: number;
+    PacEmail :string;
+   /*
     PacTelefonoFijo	: string;
     PacTelCelular : string;
     PacDirecRes	: string;

@@ -1,50 +1,100 @@
 <form class="emp-form" #novedadForm="ngForm" (ngSubmit)="onSubmit(novedadForm)">
+  <div class="form-row" style="text-align : center">
+    <div class="form-group col-md-3 page-header bg-info text-white">
+      <h4>
+        <p> <strong>Datos Sede </strong></p>
+      </h4>
+    </div>
+    <div class="form-group col-md-2 page-header">
+      <h5> <small>
+          <p> <strong>Fecha Registro Novedad </strong> </p>
+        </small>
+      </h5>
+    </div>
+    <div class="form-group col-md-2">
+      <input type="date" class="form-control" name="PacFechaReg" #PacFechaReg="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacFechaReg">
+    </div>
+    <div class="form-group col-md-1 page-header">
+      <h5> <small>
+          <p><strong>Sede que notifica</strong></p>
+        </small>
+      </h5>
+    </div>
+    <div class="form-group col-md-2">
+      <select name="PacIdSede" #PacIdSede="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacIdSede">
+        <option *ngFor="let s of Sedes" [value]="s.name">{{s.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row" style="text-align : center">
+    <div class="form-group col-md-12 page-header bg-info text-white">
+      <h4>
+        <p>
+            <strong>Datos Paciente</strong>
+        </p>
+      </h4>
+    </div>
+  </div>
   <div class="form-row">
-    <div class="form-group col-md-6 col-xs-6">
+    <div class="form-group col-md-2">
       <input class="form-control" name="PacNom" #PacNom="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom"
         placeholder="Primer Nombre" required>
       <div class="validation-error" *ngIf="PacNom.invalid && PacNom.touched">Campo Obligatorio.</div>
     </div>
-    <div class="form-group col-md-6 col-xs-6">
+    <div class="form-group col-md-2">
       <input class="form-control" name="PacNom2" #PacNom2="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNom2"
         placeholder="Segundo Nombre" required>
       <div class="validation-error" *ngIf="PacNom2.invalid && PacNom2.touched">Campo Obligatorio.</div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6 col-xs-6">
+    <div class="form-group col-md-2">
       <input class="form-control" name="PacApellido" #PacApellido="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido"
-        placeholder="Primer Apellido" required>
+        placeholder="strong>Primer Apellido" required>
       <div class="validation-error" *ngIf="PacApellido.invalid && PacApellido.touched">Campo Obligatorio.</div>
     </div>
-    <div class="form-group col-md-6 col-xs-6">
+    <div class="form-group col-md-2">
       <input class="form-control" name="PacApellido1" #PacApellido1="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacApellido1"
         placeholder="Segundo Apellido" required>
       <div class="validation-error" *ngIf="PacApellido1.invalid && PacApellido1.touched">Campo Obligatorio.</div>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-3 col-xs-6">
-      <input class="form-control" name="PacNit" #PacNit="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNit"
-        placeholder="NIT" required>
+    <div class="form-group col-md-2 page-header">
+      <h5> <small>
+          <p><strong>Tipo Identificación</strong></p>
+        </small>
+      </h5>
     </div>
-    <div class="form-group col-md-3 col-xs-6">
-      <div class="form-group col-md-6 col-xs-6">       
-        <select name="PacTipoIden" #PacTipoIden="ngModel" [(ngModel)]="Nits">
-          <option *ngFor="let n of Nits" [ngValue]="n">{{n.name}}</option>
-        </select>  
+    <div class="form-group col-md-1">
+      <select name="PacTipoIden" #PacTipoIden="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacTipoIden">
+        <option *ngFor="let n of Nits" [value]="n.name">{{n.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <input class="form-control" name="PacNit" #PacNit="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacNit"
+        placeholder="Num de Identida" required>
+      <div class="validation-error" *ngIf="PacNit.invalid && PacNit.touched">Campo Obligatorio.</div>
+    </div>
+    <div class="form-group col-md-1">
+      <input class="form-control" name="PacEdad" #PacEdad="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacEdad"
+        placeholder="Edad">
+    </div>
+    <div class="form-group col-md-3">
+      <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="PacEmail"
+        #PacEmail="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacEmail" placeholder="Email">
+      <div *ngIf="PacEmail.errors &&(PacEmail.touched || PacEmail.dirty)" class="aler alert-danger">
+        <div [hidden]="!PacEmail.errors?.pattern">
+          Invalid pattern
+        </div>
       </div>
     </div>
-    <div class="form-group col-md-4 col-xs-6">
-      <input type="date" class="form-control" name="PacFechaReg" #PacFechaReg="ngModel" [(ngModel)]="novedadService.selectedNovedad.PacFechaReg">
-    </div>
-  </div>  
+
+  </div>
   <div class="form-row">
     <div class="form-group col-md-8 col-xs-6">
       <button type="submit" class="btn btn-lg btn-block btn-info"><i class="fa fa-floppy-o"></i> Guardar</button>
     </div>
     <div class="form-group col-md-4 col-xs-6">
-      <button class="btn btn-lg btn-block btn-secondary" (click)="resetForm(novedadForm)"><i class="fa fa-repeat"></i>
+      <button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(novedadForm)"><i class="fa fa-repeat"></i>
         Borrar</button>
     </div>
   </div>
