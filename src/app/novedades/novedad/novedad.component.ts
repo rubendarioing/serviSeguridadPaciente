@@ -18,7 +18,7 @@ export class NovedadComponent implements OnInit {
 
   //tipo = [];
 
-  constructor(private novedadService: NovedadService) {
+  constructor(public novedadService: NovedadService) {
     /* this.novedadService.getTipoDocumentos().subscribe(data =>{
        this.tipo=data;
      });*/
